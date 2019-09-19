@@ -1,8 +1,7 @@
 $( document ).ready(function() {
     
     var tricks = ["Ollie", "Kickflip", "Treflip", "Nollie", "Bigspin", "Double Flip", "Benihina", "Manual", "Nollie Flip", "180"];
-    // Creating Functions & Methods
-    // Function that displays all gif buttons
+    
     function displayGifButtons(){
         $("#gifButtonsView").empty(); // erasing anything in this div id so that it doesnt duplicate the results
         for (var i = 0; i < tricks.length; i++){
@@ -14,12 +13,12 @@ $( document ).ready(function() {
             $("#gifButtonsView").append(gifButton);
         }
     }
-    // Function to add a new action button
+    
     function addNewButton(){
         $("#addGif").on("click", function(){
         var action = $("#action-input").val().trim();
         if (action == ""){
-          return false; // added so user cannot add a blank button
+          return false; 
         }
         tricks.push(action);
     
@@ -35,7 +34,7 @@ $( document ).ready(function() {
         return false;
         });
     }
-    // Function that displays all of the gifs
+    
     function displayGifs(){
         var action = $(this).attr("data-name");
         var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + action + "&api_key=dc6zaTOxFJmzC&limit=10";
@@ -53,25 +52,22 @@ $( document ).ready(function() {
     
                 var gifDiv = $("<div>"); //div for the gifs to go inside
                 gifDiv.addClass("gifDiv");
-                // pulling rating of gif
                 var gifRating = $("<p>").text("Rating: " + results[i].rating);
                 gifDiv.append(gifRating);
-                // pulling gif
                 var gifImage = $("<img>");
-                gifImage.attr("src", results[i].images.fixed_height_small_still.url); // still image stored into src of image
-                gifImage.attr("data-still",results[i].images.fixed_height_small_still.url); // still image
-                gifImage.attr("data-animate",results[i].images.fixed_height_small.url); // animated image
-                gifImage.attr("data-state", "still"); // set the image state
+                gifImage.attr("src", results[i].images.fixed_height_small_still.url); 
+                gifImage.attr("data-still",results[i].images.fixed_height_small_still.url); 
+                gifImage.attr("data-animate",results[i].images.fixed_height_small.url);
+                gifImage.attr("data-state", "still"); 
                 gifImage.addClass("image");
                 gifDiv.append(gifImage);
-                // pulling still image of gif
-                // adding div of gifs to gifsView div
+                
                 $("#gifsView").prepend(gifDiv);
             }
         });
     }
-    // Calling Functions & Methods
-    displayGifButtons(); // displays list of tricks already created
+   
+    displayGifButtons(); 
     addNewButton();
     removeLastButton();
     // Document Event Listeners
