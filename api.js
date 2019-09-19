@@ -1,16 +1,16 @@
 $( document ).ready(function() {
-    // An array of actions, new actions will be pushed into this array;
-    var actions = ["Ollie", "Kickflip", "Treflip", "Nollie", "Bigspin", "Double Flip", "Benihina", "Manual", "Nollie Flip", "180"];
+    
+    var tricks = ["Ollie", "Kickflip", "Treflip", "Nollie", "Bigspin", "Double Flip", "Benihina", "Manual", "Nollie Flip", "180"];
     // Creating Functions & Methods
     // Function that displays all gif buttons
     function displayGifButtons(){
         $("#gifButtonsView").empty(); // erasing anything in this div id so that it doesnt duplicate the results
-        for (var i = 0; i < actions.length; i++){
+        for (var i = 0; i < tricks.length; i++){
             var gifButton = $("<button>");
             gifButton.addClass("action");
             gifButton.addClass("btn btn-primary")
-            gifButton.attr("data-name", actions[i]);
-            gifButton.text(actions[i]);
+            gifButton.attr("data-name", tricks[i]);
+            gifButton.text(tricks[i]);
             $("#gifButtonsView").append(gifButton);
         }
     }
@@ -21,18 +21,16 @@ $( document ).ready(function() {
         if (action == ""){
           return false; // added so user cannot add a blank button
         }
-        actions.push(action);
+        tricks.push(action);
     
         displayGifButtons();
         return false;
         });
     }
-    // Function to remove last action button
-        // Doesnt work properly yet removes all of the added buttons
-        // rather than just the last
+   
     function removeLastButton(){
         $("removeGif").on("click", function(){
-        actions.pop(action);
+        tricks.pop(action);
         displayGifButtons();
         return false;
         });
@@ -73,7 +71,7 @@ $( document ).ready(function() {
         });
     }
     // Calling Functions & Methods
-    displayGifButtons(); // displays list of actions already created
+    displayGifButtons(); // displays list of tricks already created
     addNewButton();
     removeLastButton();
     // Document Event Listeners
