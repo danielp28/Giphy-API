@@ -7,7 +7,7 @@ $( document ).ready(function() {
         for (var i = 0; i < tricks.length; i++){
             var gifButton = $("<button>");
             gifButton.addClass("action");
-            gifButton.addClass("btn btn-primary")
+            gifButton.addClass("btn btn-primary top-btn")
             gifButton.attr("data-name", tricks[i]);
             gifButton.text(tricks[i]);
             $("#gifButtonsView").append(gifButton);
@@ -16,19 +16,19 @@ $( document ).ready(function() {
     
     function addNewButton(){
         $("#addGif").on("click", function(){
-        var action = $("#action-input").val().trim();
+        var action = $("#gif-search").val().trim();
         if (action == ""){
           return false; 
-        }
+        } else if (tricks.includes(action) === false){
         tricks.push(action);
-    
+        }
         displayGifButtons();
         return false;
         });
     }
    
     function removeLastButton(){
-        $("removeGif").on("click", function(){
+        $("#removeGif").on("click", function(){
         tricks.pop(action);
         displayGifButtons();
         return false;
