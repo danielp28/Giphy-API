@@ -23,6 +23,7 @@ $( document ).ready(function() {
         tricks.push(action);
         }
         displayGifButtons();
+        $("#gif-search").val("")
         return false;
         });
     }
